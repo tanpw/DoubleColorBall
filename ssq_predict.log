@@ -1,0 +1,4 @@
+2026-05-01 20:46:38,304 - INFO - 程序启动，参数：Namespace(plot=False, data='2013-2026.txt', strategy='random', batch=0, backtest=0, update=False)
+2026-05-01 21:45:41,841 - INFO - 程序启动，参数：Namespace(plot=False, data='2013-2026.txt', strategy='default', batch=0, backtest=0, update=False)
+2026-05-01 21:45:41,899 - INFO - 开始分析，共 20 期历史数据
+2026-05-01 21:45:41,917 - INFO - 预测完成：红球 [1, 7, 12, 20, 26, 33]，蓝球 1

@@ -1,0 +1,101 @@
+打包说明
+====================
+
+【方式一：使用打包脚本（推荐）】
+
+1. 确保已安装依赖：
+   pip install -r requirements.txt
+
+2. 运行打包脚本：
+   python build.py
+
+3. 打包完成后，可执行文件位于：
+   - Windows: dist/SSQ_Predictor.exe
+   - Linux/Mac: dist/ssq_predictor
+
+4. 可直接双击运行，无需Python环境
+
+
+【方式二：手动使用PyInstaller】
+
+1. 安装PyInstaller：
+   pip install pyinstaller
+
+2. 打包GUI版本（推荐）：
+   pyinstaller --onefile --windowed --name=SSQ_Predictor --icon=app.ico gui.py
+
+3. 打包命令行版本：
+   pyinstaller --onefile --name=SSQ_Predictor_CLI 1claude_opus_4.5.py
+
+4. 打包后的exe文件位于 dist/ 目录
+
+
+【方式三：使用spec文件打包】
+
+1. 创建 spec 配置文件 SSQ_Predictor.spec
+
+2. 内容示例：
+   # -*- mode: python ; coding: utf-8 -*-
+
+   block_cipher = None
+
+   a = Analysis(['gui.py'],
+                pathex=[],
+                binaries=[],
+                datas=[],
+                hiddenimports=[],
+                hookspath=[],
+                hooksconfig={},
+                runtime_hooks=[],
+                excludes=[],
+                win_no_prefer_redirects=False,
+                win_private_assemblies=False,
+                cipher=block_cipher,
+                noarchive=False)
+
+   pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
+
+   exe = EXE(pyz, a.scripts, a.binaries, a.zipfiles, a.datas,
+             name='SSQ_Predictor',
+             debug=False,
+             bootloader_ignore_signals=False,
+             strip=False,
+             upx=True,
+             upx_exclude=[],
+             runtime_tmpdir=None,
+             console=False,
+             disable_windowed_traceback=False,
+             argv_emulation=False,
+             target_arch=None,
+             codesign_identity=None,
+             entitlements_file=None,
+             icon='app.ico')
+
+3. 运行打包：
+   pyinstaller SSQ_Predictor.spec
+
+
+【注意事项】
+
+1. 图标文件：
+   - 如需自定义图标，创建 app.ico 文件
+   - 可使用在线工具将 PNG/BMP 转换为 ICO 格式
+   - 或移除 --icon 参数使用默认图标
+
+2. 数据文件：
+   - 打包后的exe运行时需要数据文件
+   - 可将数据文件放在 exe 同目录下
+
+3. 依赖问题：
+   - 如遇到打包失败，尝试更新 pyinstaller
+   - pip install --upgrade pyinstaller
+
+4. 杀毒软件提示：
+   - 打包的程序可能被杀毒软件误报
+   - 可添加数字签名或信任该程序
+
+
+【快速打包命令】
+
+# 一行命令打包GUI版本
+pyinstaller --onefile --windowed --name=SSQ_Predictor gui.py

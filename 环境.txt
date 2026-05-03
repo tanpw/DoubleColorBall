@@ -1,0 +1,86 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【快速安装】（推荐）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1、创建虚拟环境：
+python -m venv myenv
+
+2、激活虚拟环境：
+myenv\Scripts\activate
+
+注意: 激活后命令提示符前面会显示 (myenv)
+
+3、一键安装所有依赖：
+python install_all.py
+
+4、创建图标：
+python create_icon.py
+
+5、运行程序：
+python main.py
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【详细安装】
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1、创建虚拟环境：
+python -m venv myenv
+
+2、激活虚拟环境：
+myenv\Scripts\activate
+
+3、升级pip：
+python.exe -m pip install --upgrade pip
+
+4、安装基础依赖：
+pip install --upgrade pip setuptools
+
+5、安装项目依赖：
+$env:PYTHONUTF8=1  # 强制 Python 使用 UTF-8
+$env:PYTHONIOENCODING="utf-8"  # 设置 I/O 编码
+pip install -r requirements.txt
+
+
+# 或使用国内镜像（如果速度慢）：
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+6、安装男声语音包（推荐）：
+python setup_male_voice.py
+
+# 或手动安装：
+pip install edge-tts
+
+7、创建图标：
+python create_icon.py
+
+# 如果提示缺少 PIL，先安装：
+pip install pillow
+
+8、测试语音：
+python test_voices.py
+
+9、运行程序：
+python main.py
+
+10、打包成EXE：
+python build_exe.py
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【常见问题】
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Q: ModuleNotFoundError: No module named 'PIL'
+A: pip install pillow
+
+Q: 安装速度慢
+A: 使用国内镜像
+   pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+Q: 没有男声
+A: python setup_male_voice.py
+
+Q: 如何测试
+A: python test_voices.py
